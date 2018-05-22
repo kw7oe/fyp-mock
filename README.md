@@ -51,7 +51,7 @@ Example Reponse:
 ```
 {
   "course_id": "1",
-  "date": "2017-08-24",
+  "date": "24/08/2017",
   "group_id": "1",
   "attended": [
     "15053648",
