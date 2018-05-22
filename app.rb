@@ -16,8 +16,7 @@ end
 
 # Get attendance of a class
 # E.g /attendance?course_id=1&date=2017-07-24&group_id=3
-get '/attendance' do
-  content_type :json
+get '/attendance' do content_type :json
   result = construct_attendance(
     course_id: params[:course_id],
     date: params[:date],
@@ -30,7 +29,7 @@ end
 def construct_course(id:)
   {
     id: id,
-    dates: [
+    classes: [
       {
         date: '2017-07-24',
         group_id: 1
