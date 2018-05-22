@@ -31,13 +31,25 @@ def construct_course(id:)
     id: id,
     classes: [
       {
-        date: '2017-07-24',
-        group_id: 1
+        group_id: 1,
+        dates: [
+          '2017-07-12',
+          '2017-07-14',
+          '2017-07-16',
+          '2017-07-22',
+          '2017-07-24',
+        ]
       },
       {
-        date: '2017-07-12',
-        group_id: 2
-      },
+        group_id: 2,
+        dates: [
+          '2017-07-11',
+          '2017-07-15',
+          '2017-07-16',
+          '2017-07-21',
+          '2017-07-23',
+        ]
+      }
     ]
   }
 end
@@ -48,15 +60,15 @@ def construct_attendance(course_id:, date:, group_id:)
     date: date,
     group_id: group_id,
     attended: [
-      15053648,
-      15032412,
-      15023412
+      "15053648",
+      "15032412",
+      "15023412"
     ],
     excuse: [
     ],
     absent: [
-      14023122,
-      13021321
+      "14023122",
+      "13021321"
     ]
   }
 end
