@@ -11,7 +11,7 @@ end
 # Get courses class details
 get '/courses/:id' do
   content_type :json
-  result = DataGenerator.construct_course(id: params[:id])
+  result = DataGenerator.construct_course(params[:id])
   JSON(result)
 end
 
@@ -19,9 +19,9 @@ end
 # E.g /attendance?course_id=1&date=2017-07-24&group_id=3
 get '/attendance' do content_type :json
 result = DataGenerator.construct_attendance(
-    course_id: params[:course_id],
-    date: params[:date],
-    group_id: params[:group_id]
+    params[:course_id],
+    params[:date],
+    params[:group_id]
   )
   JSON(result)
 end

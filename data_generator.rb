@@ -1,5 +1,38 @@
+require 'csv'
+
 module DataGenerator
   extend self
+
+  def construct_course(id)
+    {
+      id: id,
+      classes: groups(4, Date.new(2018, 3, 26), 3)
+    }
+  end
+
+  def construct_attendance(course_id, date, group_id)
+    attended, absent = student_ids("../fake-data/outputs/test.csv").partition do |s|
+      [true, false].sample
+    end
+
+    {
+      course_id: course_id,
+      date: date,
+      group_id: group_id,
+      attended: attended,
+      excuse: [],
+      absent: absent
+    }
+  end
+
+  private
+  def student_ids(file)
+    CSV.open(file, "r", headers: true) do |csv|
+      csv.map do |line|
+        line["studentId"]
+      end
+    end
+  end
 
   def dates(date, interval)
     14.times.map do
@@ -17,31 +50,5 @@ module DataGenerator
 
   def groups(max, date, interval)
     max.times.map { |i| group(i, date, interval) }
-  end
-
-  def construct_course(id:)
-    {
-      id: id,
-      classes: groups(4, Date.new(2018, 3, 26), 3)
-    }
-  end
-
-  def construct_attendance(course_id:, date:, group_id:)
-    {
-      course_id: course_id,
-      date: date,
-      group_id: group_id,
-      attended: [
-        "15053648",
-        "15032412",
-        "15023412"
-      ],
-      excuse: [
-      ],
-      absent: [
-        "14023122",
-        "13021321"
-      ]
-    }
   end
 end
