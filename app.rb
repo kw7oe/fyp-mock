@@ -17,7 +17,15 @@ end
 
 get '/courses/:id/students' do
   content_type :json
+  filename = "data/students_#{params[:id]}.json"
+  if File.exist? filename
+    return File.read(filename)
+  end
+
   result = DataGenerator.generate_students(params[:id])
+  File.open(filename, "w") do |f|
+    f.write(JSON.pretty_generate(result))
+  end
   JSON(result)
 end
 
