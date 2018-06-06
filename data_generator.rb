@@ -1,7 +1,16 @@
 require 'csv'
+require_relative 'student_generator'
 
 module DataGenerator
   extend self
+
+  def generate_students(id)
+    students = 30.times.map { StudentGenerator.generate }
+    {
+      id: id,
+      students: students
+    }
+  end
 
   def construct_course(id)
     {
@@ -11,7 +20,7 @@ module DataGenerator
   end
 
   def construct_attendance(course_id, date, group_id)
-    attended, absent = student_ids("../fake-data/outputs/test.csv").partition do |s|
+    attended, absent = student_ids("../fake-data/outputs/test4.csv").partition do |s|
       [true, false].sample
     end
 
@@ -37,7 +46,7 @@ module DataGenerator
   def dates(date, interval)
     14.times.map do
       date = date + (rand(interval) + 6)
-      date
+      date.strftime("%d/%m/%Y")
     end
   end
 
