@@ -1,4 +1,4 @@
-require 'csv'
+require 'json'
 require_relative 'student_generator'
 
 module DataGenerator
@@ -20,7 +20,7 @@ module DataGenerator
   end
 
   def construct_attendance(course_id, date, group_id)
-    attended, absent = student_ids("../fake-data/outputs/test4.csv").partition do |s|
+    attended, absent = student_ids(course_id, group_id).partition do |s|
       [true, false].sample
     end
 
@@ -35,12 +35,10 @@ module DataGenerator
   end
 
   private
-  def student_ids(file)
-    CSV.open(file, "r", headers: true) do |csv|
-      csv.map do |line|
-        line["studentId"]
-      end
-    end
+  def student_ids(course_id, group_id)
+    filename = "data/students_#{course_id}.json"
+    json = JSON.parse(File.read(filename))
+    json["students"].map { |s| s[2].to_s }
   end
 
   def dates(date, interval)
