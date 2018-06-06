@@ -42,10 +42,11 @@ module DataGenerator
   end
 
   def dates(date, interval)
-    14.times.map do
+    d = 14.times.map do
       date = date + (rand(interval) + 6)
+      next if date > Date.today
       date.strftime("%d/%m/%Y")
-    end
+    end.compact
   end
 
   def group(id, start_date = Date.today, interval = 2)
