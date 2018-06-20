@@ -66,4 +66,56 @@ Example Reponse:
 }
 ```
 
+#### 3. Get students of a course
+
+Definition:
+```
+GET http://localhost:4567/courses/:id/students
+```
+
+Example Response:
+```
+{
+  "id": "1",
+  "students": [
+    [
+      "Concepcion Streich",
+      "14635668@imail.sunway.edu.my",
+      14635668,
+      "646-97-9199",
+      "Malaysian",
+      "968.641.3561",
+      "11/02/1998",
+      "BCNS",
+      "201601",
+      8
+    ],
+    [
+      "Oda Ritchie",
+      "14292323@imail.sunway.edu.my",
+      14292323,
+      "600-03-3679",
+      "Malaysian",
+      "(890) 404-1349",
+      "02/12/1998",
+      "BCNS",
+      "201708",
+      3
+    ],
+    [
+      "Ella Rohan",
+      "12361363@imail.sunway.edu.my",
+      12361363,
+      "042-17-1987",
+      "Malaysian",
+      "(384) 734-7791",
+      "08/02/1999",
+      "BCNS",
+      "201503",
+      10
+    ],
+    ...
+  ]
+}
+```
 
