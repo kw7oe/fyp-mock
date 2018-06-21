@@ -11,7 +11,12 @@ end
 # Get courses class details
 get '/courses/:id' do
   content_type :json
+  filename = "data/course_#{params[:id]}.json"
+  if File.exist? filename
+    return File.read(filename)
+  end
   result = DataGenerator.construct_course(params[:id])
+
   JSON(result)
 end
 
@@ -32,11 +37,19 @@ end
 # Get attendance of a class
 # E.g /attendance?course_id=1&date=2017-07-24&group_id=3
 get '/attendance' do content_type :json
-result = DataGenerator.construct_attendance(
-    params[:course_id],
-    params[:date],
-    params[:group_id]
-  )
+  dates = params[:date].split("/")
+  date = "#{dates[2]}-#{dates[1]}-#{dates[0]}"
+  filename = "data/attedance_#{params[:course_id]}_#{date}_#{params[:group_id]}.json"
+  puts filename
+  if File.exist? filename
+    return File.read(filename)
+  end
+
+  result = DataGenerator.construct_attendance(
+      params[:course_id],
+      params[:date],
+      params[:group_id]
+    )
   JSON(result)
 end
 
