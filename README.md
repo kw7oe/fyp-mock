@@ -11,6 +11,7 @@
 2. `gem install sinatra` to install the dependency.
 3. `ruby app.rb` to run the server
 
+### API
 #### 1. Get class details of a course
 
 Definition:
