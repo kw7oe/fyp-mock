@@ -1,5 +1,12 @@
 ### Mock Data for FYP application
 
+### Installation
+
+1. Install `ruby`. Refer to the
+[official installation guide](https://www.ruby-lang.org/en/documentation/installation/)
+2. `gem install sinatra` to install the dependency.
+3. `ruby app.rb` to run the server
+
 #### 1. Get class details of a course
 
 Definition:
