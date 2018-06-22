@@ -1,6 +1,6 @@
 ### Mock Data for FYP application
 
-### Installation
+### Setup
 
 1. Install `ruby`. Refer to the
 [official installation guide](https://www.ruby-lang.org/en/documentation/installation/)
