@@ -1,5 +1,9 @@
 ### Mock Data for FYP application
 
+### Dependencies
+- [Ruby](https://www.ruby-lang.org/en/)
+- [Sinatra](http://sinatrarb.com/)
+
 ### Setup
 
 1. Install `ruby`. Refer to the
